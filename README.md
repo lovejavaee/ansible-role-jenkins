@@ -1,6 +1,6 @@
 # Ansible Role: Jenkins CI
 
-[![CI](https://github.com/geerlingguy/ansible-role-jenkins/workflows/CI/badge.svg?event=push)](https://github.com/geerlingguy/ansible-role-jenkins/actions?query=workflow%3ACI)
+[![CI](https://github.com/geerlingguy/ansible-role-jenkins/actions/workflows/ci.yml/badge.svg)](https://github.com/geerlingguy/ansible-role-jenkins/actions/workflows/ci.yml)
 
 Installs Jenkins CI on RHEL/CentOS and Debian/Ubuntu servers.
 
@@ -127,6 +127,10 @@ Changes made to the Jenkins systemd override.conf file; the default set of chang
       - "localhost"
 
 If you are running Jenkins behind a proxy server, configure these options appropriately. Otherwise Jenkins will be configured with a direct Internet connection.
+
+    jenkins_restart_method: `service`
+
+You can change `jenkins_restart_method` to `safe-restart`, if you want to make sure all running jobs on the Jenkins server are completed. Otherwise `service` will restart the Jenkins systemd-service.
 
 ## Dependencies
 

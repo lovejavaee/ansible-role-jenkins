@@ -1,7 +1,7 @@
 ---
 # Variable setup.
 - name: Include OS-Specific variables
-  include_vars: "{{ ansible_os_family }}.yml"
+  include_vars: "{{ ansible_facts.os_family }}.yml"
 
 - name: Define jenkins_repo_url
   set_fact:
@@ -20,10 +20,10 @@
 
 # Setup/install tasks.
 - include_tasks: setup-RedHat.yml
-  when: ansible_os_family == 'RedHat'
+  when: ansible_facts.os_family == 'RedHat'
 
 - include_tasks: setup-Debian.yml
-  when: ansible_os_family == 'Debian'
+  when: ansible_facts.os_family == 'Debian'
 
 # Configure Jenkins init settings.
 - include_tasks: settings.yml
